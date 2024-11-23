@@ -13,27 +13,46 @@ class House:
 
     # Сравнить '=' кол. этажей и вывести bool значение
     def __eq__(self, other):
-        return self.number_of_floors == other.number_of_floors
+        if isinstance(other, House):
+            return self.number_of_floors == other.number_of_floors
+        elif isinstance(other, int):
+            return self.number_of_floors == other
 
     # Сравнить '<' кол. этажей и вывести bool значение
     def __lt__(self, other):
-        return self.number_of_floors < other.number_of_floors
+        if isinstance(other, House):
+            return self.number_of_floors < other.number_of_floors
+        elif isinstance(other, int):
+            return self.number_of_floors < other
 
     # Сравнить '<=' кол. этажей и вывести bool значение
     def __le__(self, other):
-        return self.number_of_floors <= other.number_of_floors
+        if isinstance(other, House):
+            return self.number_of_floors <= other.number_of_floors
+        elif isinstance(other, int):
+            return self.number_of_floors <= other
 
     # Сравнить '>' кол. этажей и вывести bool значение
     def __gt__(self, other):
-        return  self.number_of_floors > other.number_of_floors
+        if isinstance(other, House):
+            return self.number_of_floors > other.number_of_floors
+        elif isinstance(other, int):
+            return self.number_of_floors > other
 
+    # Сравнить '>=' кол. этажей и вывести bool значение
+    def __ge__(self, other):
+        if isinstance(other, House):
+            return self.number_of_floors >= other.number_of_floors
+        elif isinstance(other, int):
+            return self.number_of_floors >= other
+
+    # Сравнить '!=' кол. этажей и вывести bool значение
     def __ne__(self, other):
         return self.number_of_floors != other.number_of_floors
 
     def __add__(self, value):
         if isinstance(value, int):
             return House(self.name, self.number_of_floors + value)
-
 
     def __radd__(self, value):
         if isinstance(value, int):
